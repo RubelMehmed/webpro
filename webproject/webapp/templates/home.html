@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<h1 class="mt-5 p-4 bg-dark text-light text-center">Teacher Profile</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Joining</th>
+      <th scope="col">Courses</th>
+      <th scope="col">Department</th>
+      <th scope="col">Ratings</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in teacher %}
+    <tr>
+      <th scope="row">{{ t.t_id }}</th>
+      <td>{{ t.t_name }}</td>
+      <td>{{ t.t_sub }}</td>
+      <td>{{ t.t_join }}</td>
+      <td>{{ t.t_course }}</td>
+      <td>{{ t.t_department }}</td>
+      <td>{{ t.t_rating }}</td>
+      <td>
+        <a href="{% url 'removing' t.id %}" class="btn btn-danger"> Delete </a>
+        <a href="{% url 'editing' t.id %}" class="btn btn-info">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<button class="btn btn-Primary">
+  <a href="{% url 'addnow' %}" class="btn btn-success">Add New</a>
+</button>
+
+{% endblock %}
